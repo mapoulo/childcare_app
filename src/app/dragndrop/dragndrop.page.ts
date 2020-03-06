@@ -39,7 +39,8 @@ export class DragndropPage implements OnInit {
     this.dragulaService.removeModel('bag')
     .subscribe(({ item }) => {
       this.toastController.create({
-        message: 'Removed: ' + item.value,
+        message: 'Good Job!',
+        position:"middle",
         duration: 2000
       }).then(toast => toast.present());
     });
@@ -52,6 +53,10 @@ export class DragndropPage implements OnInit {
     this.dragulaService.createGroup('bag', {
       removeOnSpill: true
     });
+  }
+  ionViewDidLeave()
+  {
+    this.dragulaService.destroy('bag')
   }
 
   addTodo() {
@@ -74,7 +79,37 @@ export class DragndropPage implements OnInit {
   }
 
 
-
+  slideOpts = {
+    initialSlide: 0,
+    speed: 400,
+    grabCursor: true,
+    cubeEffect: {
+      shadow: true,
+      slideShadows: true,
+      shadowOffset: 20,
+      shadowScale: 0.94,
+    },on: {
+      beforeInit: function() {
+        const swiper = this;
+        swiper.classNames.push(`${swiper.params.containerModifierClass}cube`);
+        swiper.classNames.push(`${swiper.params.containerModifierClass}3d`);
+  
+        const overwriteParams = {
+          slidesPerView: 1,
+          slidesPerColumn: 1,
+          slidesPerGroup: 1,
+          watchSlidesProgress: true,
+          resistanceRatio: 0,
+          spaceBetween: 0,
+          centeredSlides: false,
+          virtualTranslate: true,
+        };
+  
+        this.params = Object.assign(this.params, overwriteParams);
+        this.originalParams = Object.assign(this.originalParams, overwriteParams);
+      }
+    
+  }
 
   ngOnInit() {
   }

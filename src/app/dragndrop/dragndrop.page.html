@@ -1,4 +1,16 @@
 <ion-content forceOverscroll="false">
+    <ion-slides [options]="slideOpts">
+      <ion-slide>
+        <h1>Slide 1</h1>
+      </ion-slide>
+      <ion-slide>
+        <h1>Slide 2</h1>
+      </ion-slide>
+      <ion-slide>
+        <h1>Slide 3</h1>
+      </ion-slide>
+    </ion-slides>
+
   <ion-grid>
  
     <ion-row align-items-center>
@@ -14,45 +26,36 @@
  
     <ion-row no-padding class="matrix">
       <ion-col size="6" class="q1">
-        <div class="q-header">Do</div>
+        
         <ion-list dragula="bag" [(dragulaModel)]="q1" lines="none">
           <ion-item *ngFor="let item of q1" [color]="item.color" expand="block" text-wrap>
-            {{ item.value }}
+         <ion-img [src]="item.pic"></ion-img>
+            <ion-label>{{ item.value }}</ion-label>
           </ion-item>
         </ion-list>
       </ion-col>
  
       <ion-col size="6" class="q2">
-        <div class="q-header">Schedule</div>
+        
         <ion-list dragula="bag" [(dragulaModel)]="q2" lines="none">
+
           <ion-item *ngFor="let item of q2" [color]="item.color" expand="block" text-wrap>
-            {{ item.value }}
+        
+
+  <ion-img [src]="item.pic"></ion-img>
+           <ion-label>{{ item.value }}</ion-label>
           </ion-item>
         </ion-list>
       </ion-col>
  
-      <ion-col size="6" class="q3">
-        <div class="q-header">Delegate</div>
-        <ion-list dragula="bag" [(dragulaModel)]="q3" lines="none">
-          <ion-item *ngFor="let item of q3" [color]="item.color" expand="block" text-wrap>
-            {{ item.value }}
-          </ion-item>
-        </ion-list>
-      </ion-col>
+     
  
-      <ion-col size="6" class="q4">
-        <div class="q-header">Don't do</div>
-        <ion-list dragula="bag" [(dragulaModel)]="q4" lines="none">
-          <ion-item *ngFor="let item of q4" [color]="item.color" expand="block" text-wrap>
-            {{ item.value }}
-          </ion-item>
-        </ion-list>
-      </ion-col>
+      
     </ion-row>
   </ion-grid>
  
-  <ion-row class="delete-area" align-items-center justify-content-center>
-    <ion-icon name="trash" color="medium"></ion-icon>
-  </ion-row>
+  <div style ="position:absolute;bottom:0" align ="center">
+    <p style ="size:300px" align ="center"><ion-icon name ="trash"></ion-icon> DROP HERE</p>
+  </div>
  
 </ion-content>

@@ -144,7 +144,7 @@ export class HomePage{
   constructor(private routes:Router ) {}
 
   start() {
-    this.routes.navigateByUrl('/dragndrop')
+    this.routes.navigate(['dragndrop',{gender:this.childInfoObj.gender}])
   }
 
   selectAge(i, age) {

@@ -15,6 +15,9 @@ import { Router } from '@angular/router';
 
 
 export class DragndropPage implements OnInit {
+  ngOnInit() {
+
+  }
 
   @ViewChild('slides', {static: true}) slides : IonSlides;
 
@@ -325,13 +328,12 @@ else if(this.res==8)
       .subscribe(({ item }) => {
         item['color'] = 'success';
       });
- 
+
     this.dragulaService.createGroup('bag', {
       removeOnSpill: true
     });
   }
-  ionViewDidLeave()
-  {
+  ionViewDidLeave() {
     this.dragulaService.destroy('bag')
   }
 
@@ -364,8 +366,8 @@ else if(this.res==8)
       slideShadows: true,
       shadowOffset: 20,
       shadowScale: 0.94,
-    },on: {
-      beforeInit: function() {
+    }, on: {
+      beforeInit: function () {
         const swiper = this;
         swiper.classNames.push(`${swiper.params.containerModifierClass}cube`);
         swiper.classNames.push(`${swiper.params.containerModifierClass}3d`);
@@ -376,9 +378,5 @@ else if(this.res==8)
   }
 }
 
-  ngOnInit() {
-  }
-
- 
 
 }

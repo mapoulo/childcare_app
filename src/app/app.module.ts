@@ -8,11 +8,12 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { DragulaModule } from 'ng2-dragula';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,DragulaModule.forRoot()],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,DragulaModule.forRoot(), HttpClientModule],
   providers: [
     StatusBar,
     SplashScreen,

@@ -5,6 +5,7 @@ import { ViewChild } from '@angular/core'
 
 import { ToastController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Round2Service } from '../round2.service';
 @Component({
   selector: 'app-dragndrop',
   templateUrl: './dragndrop.page.html',
@@ -22,18 +23,9 @@ export class DragndropPage implements OnInit {
   @ViewChild('slides', { static: true }) slides: IonSlides;
 
   headers: any = ['1 Point', '2 Points', '3 Points', '4 Points', '5 Points', '6 Points', '7 Points', '8 Points']
-  q1 = [
-    { value: 'Buy Milk', color: 'primary', pic: 'https://media.giphy.com/media/3o6Mb8wu97ApZElWaQ/giphy.gif' },
-
-  ];
-  q2 = [
-    { value: 'Schedule newsletter', color: 'secondary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
-
-  ];
-  q3 = [
-    { value: 'Improve page performance', color: 'tertiary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg' },
-
-  ];
+  q1:any
+  q2:any
+  q3:any
 
 
   todo = { value: '', color: '' };
@@ -43,140 +35,140 @@ export class DragndropPage implements OnInit {
   res = 0;
   gender;
   constructor(private dragulaService: DragulaService, private toastController: ToastController, private router: Router,
-    public activatedRoute: ActivatedRoute) {
+    public activatedRoute: ActivatedRoute,public round:Round2Service) {
     this.gender = this.activatedRoute.snapshot.paramMap.get("gender");
 
-    let intervalId = setInterval(() => {
-      this.counter = this.counter - 1;
-      // console.log(this.counter)
-      if (this.counter == 0) {
-        this.counter = 15
-        this.slides.slideNext()
+    // let intervalId = setInterval(() => {
+    //   this.counter = this.counter - 1;
+    //   // console.log(this.counter)
+    //   if (this.counter == 0) {
+    //     this.counter = 15
+    //     this.slides.slideNext()
 
-        this.slides.getActiveIndex().then(res => {
-          console.log(res)
-          let num = res
+    //     this.slides.getActiveIndex().then(res => {
+    //       console.log(res)
+    //       let num = res
 
-          this.res = num;
-          if (this.res == 1) {
-            this.q1 = [
-              { value: 'Buy Milk', color: 'primary', pic: 'https://media.giphy.com/media/xT9DPzhNGA8MKjxwFG/giphy.gif' },
+    //       this.res = num;
+    //       if (this.res == 1) {
+    //         this.q1 = [
+    //           { value: 'Buy Milk', color: 'primary', pic: 'https://media.giphy.com/media/xT9DPzhNGA8MKjxwFG/giphy.gif' },
 
-            ];
-            this.q2 = [
-              { value: 'Schedule newsletter', color: 'secondary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
+    //         ];
+    //         this.q2 = [
+    //           { value: 'Schedule newsletter', color: 'secondary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
 
-            ];
-            this.q3 = [
-              { value: 'Improve page performance', color: 'tertiary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg' },
+    //         ];
+    //         this.q3 = [
+    //           { value: 'Improve page performance', color: 'tertiary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg' },
 
-            ];
-          }
-          else if (this.res == 2) {
-            this.q1 = [
-              { value: 'Buy Milk', color: 'primary', pic: 'https://media.giphy.com/media/AOVDDuySk6o3m/giphy.gif' },
+    //         ];
+    //       }
+    //       else if (this.res == 2) {
+    //         this.q1 = [
+    //           { value: 'Buy Milk', color: 'primary', pic: 'https://media.giphy.com/media/AOVDDuySk6o3m/giphy.gif' },
 
-            ];
-            this.q2 = [
-              { value: 'Schedule newsletter', color: 'secondary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
+    //         ];
+    //         this.q2 = [
+    //           { value: 'Schedule newsletter', color: 'secondary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
 
-            ];
-            this.q3 = [
-              { value: 'Improve page performance', color: 'tertiary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg' },
+    //         ];
+    //         this.q3 = [
+    //           { value: 'Improve page performance', color: 'tertiary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg' },
 
-            ];
-          }
-          if (this.res == 3) {
-            this.q1 = [
-              { value: 'Buy Milk', color: 'primary', pic: 'https://media1.tenor.com/images/a3c98dddaca3b15d1746a62a44abbc2b/tenor.gif?itemid=6183864' },
+    //         ];
+    //       }
+    //       if (this.res == 3) {
+    //         this.q1 = [
+    //           { value: 'Buy Milk', color: 'primary', pic: 'https://media1.tenor.com/images/a3c98dddaca3b15d1746a62a44abbc2b/tenor.gif?itemid=6183864' },
 
-            ];
-            this.q2 = [
-              { value: 'Schedule newsletter', color: 'secondary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
+    //         ];
+    //         this.q2 = [
+    //           { value: 'Schedule newsletter', color: 'secondary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
 
-            ];
-            this.q3 = [
-              { value: 'Improve page performance', color: 'tertiary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg' },
+    //         ];
+    //         this.q3 = [
+    //           { value: 'Improve page performance', color: 'tertiary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg' },
 
-            ];
-          }
-          else
-            if (this.res == 4) {
-              this.q1 = [
-                { value: 'Buy Milk', color: 'primary', pic: 'https://data.whicdn.com/images/271728632/original.gif' },
+    //         ];
+    //       }
+    //       else
+    //         if (this.res == 4) {
+    //           this.q1 = [
+    //             { value: 'Buy Milk', color: 'primary', pic: 'https://data.whicdn.com/images/271728632/original.gif' },
 
-              ];
-              this.q2 = [
-                { value: 'Schedule newsletter', color: 'secondary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
+    //           ];
+    //           this.q2 = [
+    //             { value: 'Schedule newsletter', color: 'secondary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
 
-              ];
-              this.q3 = [
-                { value: 'Improve page performance', color: 'tertiary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg' },
+    //           ];
+    //           this.q3 = [
+    //             { value: 'Improve page performance', color: 'tertiary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg' },
 
-              ];
-            }
-            else if (this.res == 5) {
-              this.q1 = [
-                { value: 'Buy Milk', color: 'primary', pic: 'https://i.pinimg.com/originals/ce/d4/51/ced4512db73c75e0a683ce0bc2b2f2d9.gif' },
+    //           ];
+    //         }
+    //         else if (this.res == 5) {
+    //           this.q1 = [
+    //             { value: 'Buy Milk', color: 'primary', pic: 'https://i.pinimg.com/originals/ce/d4/51/ced4512db73c75e0a683ce0bc2b2f2d9.gif' },
 
-              ];
-              this.q2 = [
-                { value: 'Schedule newsletter', color: 'secondary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
+    //           ];
+    //           this.q2 = [
+    //             { value: 'Schedule newsletter', color: 'secondary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
 
-              ];
-              this.q3 = [
-                { value: 'Improve page performance', color: 'tertiary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg' },
+    //           ];
+    //           this.q3 = [
+    //             { value: 'Improve page performance', color: 'tertiary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg' },
 
-              ];
-            }
-            else if (this.res == 6) {
-              this.q1 = [
-                { value: 'Buy Milk', color: 'primary', pic: 'https://media0.giphy.com/media/13FD3rp8IqYUXm/giphy.gif' },
+    //           ];
+    //         }
+    //         else if (this.res == 6) {
+    //           this.q1 = [
+    //             { value: 'Buy Milk', color: 'primary', pic: 'https://media0.giphy.com/media/13FD3rp8IqYUXm/giphy.gif' },
 
-              ];
-              this.q2 = [
-                { value: 'Schedule newsletter', color: 'secondary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
+    //           ];
+    //           this.q2 = [
+    //             { value: 'Schedule newsletter', color: 'secondary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
 
-              ];
-              this.q3 = [
-                { value: 'Improve page performance', color: 'tertiary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg' },
+    //           ];
+    //           this.q3 = [
+    //             { value: 'Improve page performance', color: 'tertiary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg' },
 
-              ];
-            }
-            else if (this.res == 7) {
-              this.q1 = [
-                { value: 'Buy Milk', color: 'primary', pic: 'https://i.pinimg.com/originals/3d/ac/62/3dac62954ab3ed18fd27b4a3aafcf260.gif' },
+    //           ];
+    //         }
+    //         else if (this.res == 7) {
+    //           this.q1 = [
+    //             { value: 'Buy Milk', color: 'primary', pic: 'https://i.pinimg.com/originals/3d/ac/62/3dac62954ab3ed18fd27b4a3aafcf260.gif' },
 
-              ];
-              this.q2 = [
-                { value: 'Schedule newsletter', color: 'secondary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
+    //           ];
+    //           this.q2 = [
+    //             { value: 'Schedule newsletter', color: 'secondary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
 
-              ];
-              this.q3 = [
-                { value: 'Improve page performance', color: 'tertiary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg' },
+    //           ];
+    //           this.q3 = [
+    //             { value: 'Improve page performance', color: 'tertiary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg' },
 
-              ];
-            }
+    //           ];
+    //         }
 
-            else if (this.res == 8) {
-              this.router.navigate(['modal'])
-            }
-
-
+    //         else if (this.res == 8) {
+    //           this.router.navigate(['modal'])
+    //         }
 
 
-        })
-
-        this.toastController.create({
-          message: this.gender + ', are you still there?',
-          position: "middle",
-          duration: 2000
-        }).then(toast => toast.present());
 
 
-      }
+    //     })
 
-    }, 1000)
+    //     this.toastController.create({
+    //       message: this.gender + ', are you still there?',
+    //       position: "middle",
+    //       duration: 2000
+    //     }).then(toast => toast.present());
+
+
+    //   }
+
+    // }, 1000)
 
 
 
@@ -184,22 +176,24 @@ export class DragndropPage implements OnInit {
 
     this.dragulaService.drag('bag')
       .subscribe(({ name, el, source }) => {
-        setTimeout(() => {
-          el.setAttribute('color', 'primary');
-          console.log('Maximated and draggable, it\'s a rocket science');
-        }, 200);
-       
+        el.setAttribute('color', 'primary');
       });
 
     this.dragulaService.removeModel('bag')
       .subscribe(({ item }) => {
-        this.slides.slideNext()
+        
+        setTimeout(() => {
+          this.slides.slideNext() 
+        }, 4000);
+        
 
         console.log()
         this.slides.getActiveIndex().then(res => {
           console.log(res)
-          console.log(this.slides.ionSlideDidChange)
+    
           this.res = res;
+          if(this.round.roundtwo == true)
+          {
           if (this.res == 1) {
             this.q1 = [
               { value: 'Buy Milk', color: 'primary', pic: 'https://media.giphy.com/media/xT9DPzhNGA8MKjxwFG/giphy.gif' },
@@ -301,6 +295,122 @@ export class DragndropPage implements OnInit {
             }
             else if (this.res == 8) {
               this.router.navigate(['modal'])
+            }
+
+          }
+            if(this.round.roundtwo==false)
+            {
+
+              if (this.res == 1) {
+                this.q1 = [
+                  { value: 'Buy Milk', color: 'primary', pic: 'https://media.giphy.com/media/xT9DPzhNGA8MKjxwFG/giphy.gif' },
+    
+                ];
+                this.q2 = [
+                  { value: 'Schedule newsletter', color: 'secondary', pic: 'https://giffiles.alphacoders.com/880/8803.gif' },
+    
+                ];
+                this.q3 = [
+                  { value: 'Improve page performance', color: 'tertiary', pic: 'https://thumbs.gfycat.com/AnguishedVastDorking-small.gif' },
+    
+                ];
+              }
+              else if (this.res == 2) {
+                this.q1 = [
+                  { value: 'Buy Milk', color: 'primary', pic: 'https://media.giphy.com/media/AOVDDuySk6o3m/giphy.gif' },
+    
+                ];
+                this.q2 = [
+                  { value: 'Schedule newsletter', color: 'secondary', pic: 'https://giffiles.alphacoders.com/880/8803.gif' },
+    
+                ];
+                this.q3 = [
+                  { value: 'Improve page performance', color: 'tertiary', pic: 'https://thumbs.gfycat.com/AnguishedVastDorking-small.gif' },
+    
+                ];
+              }
+              if (this.res == 3) {
+                this.q1 = [
+                  { value: 'Buy Milk', color: 'primary', pic: 'https://media1.tenor.com/images/a3c98dddaca3b15d1746a62a44abbc2b/tenor.gif?itemid=6183864' },
+    
+                ];
+                this.q2 = [
+                  { value: 'Schedule newsletter', color: 'secondary', pic: 'https://giffiles.alphacoders.com/880/8803.gif' },
+    
+                ];
+                this.q3 = [
+                  { value: 'Improve page performance', color: 'tertiary', pic: 'https://thumbs.gfycat.com/AnguishedVastDorking-small.gif' },
+    
+                ];
+              }
+              else
+                if (this.res == 4) {
+                  this.q1 = [
+                    { value: 'Buy Milk', color: 'primary', pic: 'https://data.whicdn.com/images/271728632/original.gif' },
+    
+                  ];
+                  this.q2 = [
+                    { value: 'Schedule newsletter', color: 'secondary', pic: 'https://giffiles.alphacoders.com/880/8803.gif' },
+      
+                  ];
+                  this.q3 = [
+                    { value: 'Improve page performance', color: 'tertiary', pic: 'https://thumbs.gfycat.com/AnguishedVastDorking-small.gif' },
+      
+                  ];
+                }
+                else if (this.res == 5) {
+                  this.q1 = [
+                    { value: 'Buy Milk', color: 'primary', pic: 'https://i.pinimg.com/originals/ce/d4/51/ced4512db73c75e0a683ce0bc2b2f2d9.gif' },
+    
+                  ];
+                  this.q2 = [
+                    { value: 'Schedule newsletter', color: 'secondary', pic: 'https://giffiles.alphacoders.com/880/8803.gif' },
+      
+                  ];
+                  this.q3 = [
+                    { value: 'Improve page performance', color: 'tertiary', pic: 'https://thumbs.gfycat.com/AnguishedVastDorking-small.gif' },
+      
+                  ];
+                }
+                else if (this.res == 6) {
+                  this.q1 = [
+                    { value: 'Buy Milk', color: 'primary', pic: 'https://media0.giphy.com/media/13FD3rp8IqYUXm/giphy.gif' },
+    
+                  ];
+                  this.q2 = [
+                    { value: 'Schedule newsletter', color: 'secondary', pic: 'https://giffiles.alphacoders.com/880/8803.gif' },
+      
+                  ];
+                  this.q3 = [
+                    { value: 'Improve page performance', color: 'tertiary', pic: 'https://thumbs.gfycat.com/AnguishedVastDorking-small.gif' },
+      
+                  ];
+                }
+                else if (this.res == 7) {
+                  this.q1 = [
+                    { value: 'Buy Milk', color: 'primary', pic: 'https://i.pinimg.com/originals/3d/ac/62/3dac62954ab3ed18fd27b4a3aafcf260.gif' },
+    
+                  ];
+                  this.q2 = [
+                    { value: 'Schedule newsletter', color: 'secondary', pic: 'https://giffiles.alphacoders.com/880/8803.gif' },
+      
+                  ];
+                  this.q3 = [
+                    { value: 'Improve page performance', color: 'tertiary', pic: 'https://thumbs.gfycat.com/AnguishedVastDorking-small.gif' },
+      
+                  ];
+                }
+                else if (this.res == 8) {
+                  this.router.navigate(['modal']);
+                  
+                }
+    
+
+
+
+
+
+
             }
 
         })
@@ -324,7 +434,9 @@ export class DragndropPage implements OnInit {
     });
   }
   ionViewDidLeave() {
-    this.dragulaService.destroy('bag')
+    this.dragulaService.destroy('bag');
+    this.res = -8;
+
   }
 
   addTodo() {
@@ -348,7 +460,7 @@ export class DragndropPage implements OnInit {
 
 
   slideOpts = {
-    initialSlide: 0,
+    initialSlide: 1,
     speed: 400,
     grabCursor: true,
     cubeEffect: {
@@ -368,7 +480,243 @@ export class DragndropPage implements OnInit {
     }
   }
   slideChanged(val) {
+    
+  }
+ 
+
+  ionViewDidEnter()
+  {
+   
+
+    console.log("Entered",this.round.roundtwo )
+    
+
+    this.slides.getActiveIndex().then(res => {
+      console.log(res)
+
+      this.res = res; 
+      if(this.round.roundtwo == true)
+      {
+      if (this.res == 1) {
+        this.q1 = [
+          { value: 'Buy Milk', color: 'primary', pic: 'https://media.giphy.com/media/xT9DPzhNGA8MKjxwFG/giphy.gif' },
+
+        ];
+        this.q2 = [
+          { value: 'Schedule newsletter', color: 'secondary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
+
+        ];
+        this.q3 = [
+          { value: 'Improve page performance', color: 'tertiary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg' },
+
+        ];
+      }
+      else if (this.res == 2) {
+        this.q1 = [
+          { value: 'Buy Milk', color: 'primary', pic: 'https://media.giphy.com/media/AOVDDuySk6o3m/giphy.gif' },
+
+        ];
+        this.q2 = [
+          { value: 'Schedule newsletter', color: 'secondary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
+
+        ];
+        this.q3 = [
+          { value: 'Improve page performance', color: 'tertiary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg' },
+
+        ];
+      }
+      if (this.res == 3) {
+        this.q1 = [
+          { value: 'Buy Milk', color: 'primary', pic: 'https://media1.tenor.com/images/a3c98dddaca3b15d1746a62a44abbc2b/tenor.gif?itemid=6183864' },
+
+        ];
+        this.q2 = [
+          { value: 'Schedule newsletter', color: 'secondary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
+
+        ];
+        this.q3 = [
+          { value: 'Improve page performance', color: 'tertiary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg' },
+
+        ];
+      }
+      else
+        if (this.res == 4) {
+          this.q1 = [
+            { value: 'Buy Milk', color: 'primary', pic: 'https://data.whicdn.com/images/271728632/original.gif' },
+
+          ];
+          this.q2 = [
+            { value: 'Schedule newsletter', color: 'secondary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
+
+          ];
+          this.q3 = [
+            { value: 'Improve page performance', color: 'tertiary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg' },
+
+          ];
+        }
+        else if (this.res == 5) {
+          this.q1 = [
+            { value: 'Buy Milk', color: 'primary', pic: 'https://i.pinimg.com/originals/ce/d4/51/ced4512db73c75e0a683ce0bc2b2f2d9.gif' },
+
+          ];
+          this.q2 = [
+            { value: 'Schedule newsletter', color: 'secondary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
+
+          ];
+          this.q3 = [
+            { value: 'Improve page performance', color: 'tertiary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg' },
+
+          ];
+        }
+        else if (this.res == 6) {
+          this.q1 = [
+            { value: 'Buy Milk', color: 'primary', pic: 'https://media0.giphy.com/media/13FD3rp8IqYUXm/giphy.gif' },
+
+          ];
+          this.q2 = [
+            { value: 'Schedule newsletter', color: 'secondary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
+
+          ];
+          this.q3 = [
+            { value: 'Improve page performance', color: 'tertiary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg' },
+
+          ];
+        }
+        else if (this.res == 7) {
+          this.q1 = [
+            { value: 'Buy Milk', color: 'primary', pic: 'https://i.pinimg.com/originals/3d/ac/62/3dac62954ab3ed18fd27b4a3aafcf260.gif' },
+
+          ];
+          this.q2 = [
+            { value: 'Schedule newsletter', color: 'secondary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
+
+          ];
+          this.q3 = [
+            { value: 'Improve page performance', color: 'tertiary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg' },
+
+          ];
+        }
+        else if (this.res == 8) {
+          this.router.navigate(['modal'])
+        }
+
+      }
+        if(this.round.roundtwo==false)
+        {
+
+          if (this.res == 1) {
+            this.q1 = [
+              { value: 'Buy Milk', color: 'primary', pic: 'https://media.giphy.com/media/xT9DPzhNGA8MKjxwFG/giphy.gif' },
+
+            ];
+            this.q2 = [
+              { value: 'Schedule newsletter', color: 'secondary', pic: 'https://giffiles.alphacoders.com/880/8803.gif' },
+
+            ];
+            this.q3 = [
+              { value: 'Improve page performance', color: 'tertiary', pic: 'https://thumbs.gfycat.com/AnguishedVastDorking-small.gif' },
+
+            ];
+          }
+          else if (this.res == 2) {
+            this.q1 = [
+              { value: 'Buy Milk', color: 'primary', pic: 'https://media.giphy.com/media/AOVDDuySk6o3m/giphy.gif' },
+
+            ];
+            this.q2 = [
+              { value: 'Schedule newsletter', color: 'secondary', pic: 'https://giffiles.alphacoders.com/880/8803.gif' },
+
+            ];
+            this.q3 = [
+              { value: 'Improve page performance', color: 'tertiary', pic: 'https://thumbs.gfycat.com/AnguishedVastDorking-small.gif' },
+
+            ];
+          }
+          if (this.res == 3) {
+            this.q1 = [
+              { value: 'Buy Milk', color: 'primary', pic: 'https://media1.tenor.com/images/a3c98dddaca3b15d1746a62a44abbc2b/tenor.gif?itemid=6183864' },
+
+            ];
+            this.q2 = [
+              { value: 'Schedule newsletter', color: 'secondary', pic: 'https://giffiles.alphacoders.com/880/8803.gif' },
+
+            ];
+            this.q3 = [
+              { value: 'Improve page performance', color: 'tertiary', pic: 'https://thumbs.gfycat.com/AnguishedVastDorking-small.gif' },
+
+            ];
+          }
+          else
+            if (this.res == 4) {
+              this.q1 = [
+                { value: 'Buy Milk', color: 'primary', pic: 'https://data.whicdn.com/images/271728632/original.gif' },
+
+              ];
+              this.q2 = [
+                { value: 'Schedule newsletter', color: 'secondary', pic: 'https://giffiles.alphacoders.com/880/8803.gif' },
   
+              ];
+              this.q3 = [
+                { value: 'Improve page performance', color: 'tertiary', pic: 'https://thumbs.gfycat.com/AnguishedVastDorking-small.gif' },
+  
+              ];
+            }
+            else if (this.res == 5) {
+              this.q1 = [
+                { value: 'Buy Milk', color: 'primary', pic: 'https://i.pinimg.com/originals/ce/d4/51/ced4512db73c75e0a683ce0bc2b2f2d9.gif' },
+
+              ];
+              this.q2 = [
+                { value: 'Schedule newsletter', color: 'secondary', pic: 'https://giffiles.alphacoders.com/880/8803.gif' },
+  
+              ];
+              this.q3 = [
+                { value: 'Improve page performance', color: 'tertiary', pic: 'https://thumbs.gfycat.com/AnguishedVastDorking-small.gif' },
+  
+              ];
+            }
+            else if (this.res == 6) {
+              this.q1 = [
+                { value: 'Buy Milk', color: 'primary', pic: 'https://media0.giphy.com/media/13FD3rp8IqYUXm/giphy.gif' },
+
+              ];
+              this.q2 = [
+                { value: 'Schedule newsletter', color: 'secondary', pic: 'https://giffiles.alphacoders.com/880/8803.gif' },
+  
+              ];
+              this.q3 = [
+                { value: 'Improve page performance', color: 'tertiary', pic: 'https://thumbs.gfycat.com/AnguishedVastDorking-small.gif' },
+  
+              ];
+            }
+            else if (this.res == 7) {
+              this.q1 = [
+                { value: 'Buy Milk', color: 'primary', pic: 'https://i.pinimg.com/originals/3d/ac/62/3dac62954ab3ed18fd27b4a3aafcf260.gif' },
+
+              ];
+              this.q2 = [
+                { value: 'Schedule newsletter', color: 'secondary', pic: 'https://giffiles.alphacoders.com/880/8803.gif' },
+  
+              ];
+              this.q3 = [
+                { value: 'Improve page performance', color: 'tertiary', pic: 'https://thumbs.gfycat.com/AnguishedVastDorking-small.gif' },
+  
+              ];
+            }
+            else if (this.res == 8) {
+              this.router.navigate(['modal'])
+            }
+
+
+
+
+
+
+
+        }})
+
+
+
   }
 
 }

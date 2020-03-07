@@ -21,7 +21,7 @@ export class DragndropPage implements OnInit {
 
   @ViewChild('slides', { static: true }) slides: IonSlides;
 
-
+  headers: any = ['1 Point', '2 Points', '3 Points', '4 Points', '5 Points', '6 Points', '7 Points', '8 Points']
   q1 = [
     { value: 'Buy Milk', color: 'primary', pic: 'https://media.giphy.com/media/3o6Mb8wu97ApZElWaQ/giphy.gif' },
 

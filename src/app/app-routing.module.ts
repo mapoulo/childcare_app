@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: 'dragndrop',
     loadChildren: () => import('./dragndrop/dragndrop.module').then( m => m.DragndropPageModule)
+  },  {
+    path: 'modal',
+    loadChildren: () => import('./modal/modal.module').then( m => m.ModalPageModule)
   },
+
 
 ];
 

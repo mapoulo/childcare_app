@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DragulaService } from 'ng2-dragula';
+import {IonSlides} from '@ionic/angular';
+import { ViewChild } from '@angular/core'
 
 import { ToastController } from '@ionic/angular';
 @Component({
@@ -7,37 +9,302 @@ import { ToastController } from '@ionic/angular';
   templateUrl: './dragndrop.page.html',
   styleUrls: ['./dragndrop.page.scss'],
 })
+
+
+
+
 export class DragndropPage implements OnInit {
 
+  @ViewChild('slides', {static: true}) slides : IonSlides;
+
+  
   q1 = [
-    { value: 'Buy Milk', color: 'primary',pic:'https://images.pexels.com/photos/3828240/pexels-photo-3828240.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' },
-    { value: 'Write new Post', color: 'primary',pic:'https://images.pexels.com/photos/3828240/pexels-photo-3828240.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' }
+    { value: 'Buy Milk', color: 'primary',pic:'https://media.giphy.com/media/3o6Mb8wu97ApZElWaQ/giphy.gif' },
+   
   ];
   q2 = [
-    { value: 'Schedule newsletter', color: 'secondary',pic:'https://images.pexels.com/photos/3828240/pexels-photo-3828240.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' },
-    { value: 'Find new Ionic Academy topics', color: 'secondary',pic:'https://images.pexels.com/photos/3828240/pexels-photo-3828240.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' }
+    { value: 'Schedule newsletter', color: 'secondary',pic:'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
+   
   ];
   q3 = [
-    { value: 'Improve page performance', color: 'tertiary' ,pic:'https://images.pexels.com/photos/3828240/pexels-photo-3828240.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'},
-    { value: 'Clean the house', color: 'tertiary' ,pic:'https://images.pexels.com/photos/3828240/pexels-photo-3828240.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'}
+    { value: 'Improve page performance', color: 'tertiary' ,pic:'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg'},
+    
   ];
-  q4 = [
-    { value: 'Unimportant things', color: 'warning',pic:'https://images.pexels.com/photos/3828240/pexels-photo-3828240.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' },
-    { value: 'Watch Netflix', color: 'warning' ,pic:'https://images.pexels.com/photos/3828240/pexels-photo-3828240.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'}
-  ];
+
  
   todo = { value: '', color: '' };
   selectedQuadrant = 'q1';
  
-
+counter =15;
+res =0
   constructor(private dragulaService: DragulaService, private toastController: ToastController) {
+
+
+    let intervalId = setInterval(() => {
+      this.counter = this.counter - 1;
+      console.log(this.counter)
+      if(this.counter == 0){ 
+        this.counter=15
+        this.slides.slideNext()
+
+  this.slides.getActiveIndex().then(res=>{
+    console.log(res)
+   let num =res
+   
+  this.res =num+1;
+    if(this.res==1)
+    {
+      this.q1 = [
+        { value: 'Buy Milk', color: 'primary',pic:'https://media.giphy.com/media/xT9DPzhNGA8MKjxwFG/giphy.gif' },
+       
+      ];
+      this.q2 = [
+        { value: 'Schedule newsletter', color: 'secondary',pic:'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
+       
+      ];
+     this.q3 = [
+        { value: 'Improve page performance', color: 'tertiary' ,pic:'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg'},
+        
+      ];
+    }
+    else if(this.res == 2)
+    {
+      this.q1 = [
+        { value: 'Buy Milk', color: 'primary',pic:'https://media.giphy.com/media/AOVDDuySk6o3m/giphy.gif' },
+       
+      ];
+      this.q2 = [
+        { value: 'Schedule newsletter', color: 'secondary',pic:'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
+       
+      ];
+     this.q3 = [
+        { value: 'Improve page performance', color: 'tertiary' ,pic:'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg'},
+        
+      ];
+    }
+    if(this.res==3)
+    {
+      this.q1 = [
+        { value: 'Buy Milk', color: 'primary',pic:'https://media1.tenor.com/images/a3c98dddaca3b15d1746a62a44abbc2b/tenor.gif?itemid=6183864' },
+       
+      ];
+      this.q2 = [
+        { value: 'Schedule newsletter', color: 'secondary',pic:'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
+       
+      ];
+     this.q3 = [
+        { value: 'Improve page performance', color: 'tertiary' ,pic:'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg'},
+        
+      ];
+    }
+    else
+    if(this.res==4)
+    {
+      this.q1 = [
+        { value: 'Buy Milk', color: 'primary',pic:'https://data.whicdn.com/images/271728632/original.gif' },
+       
+      ];
+      this.q2 = [
+        { value: 'Schedule newsletter', color: 'secondary',pic:'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
+       
+      ];
+     this.q3 = [
+        { value: 'Improve page performance', color: 'tertiary' ,pic:'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg'},
+        
+      ];
+    }
+    else if(this.res==5)
+    {
+      this.q1 = [
+        { value: 'Buy Milk', color: 'primary',pic:'https://i.pinimg.com/originals/ce/d4/51/ced4512db73c75e0a683ce0bc2b2f2d9.gif' },
+       
+      ];
+      this.q2 = [
+        { value: 'Schedule newsletter', color: 'secondary',pic:'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
+       
+      ];
+     this.q3 = [
+        { value: 'Improve page performance', color: 'tertiary' ,pic:'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg'},
+        
+      ];
+    }
+    else if(this.res==6)
+    {
+      this.q1 = [
+        { value: 'Buy Milk', color: 'primary',pic:'https://media0.giphy.com/media/13FD3rp8IqYUXm/giphy.gif' },
+       
+      ];
+      this.q2 = [
+        { value: 'Schedule newsletter', color: 'secondary',pic:'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
+       
+      ];
+     this.q3 = [
+        { value: 'Improve page performance', color: 'tertiary' ,pic:'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg'},
+        
+      ];
+    }
+  else  if(this.res==7)
+  {
+    this.q1 = [
+      { value: 'Buy Milk', color: 'primary',pic:'https://i.pinimg.com/originals/3d/ac/62/3dac62954ab3ed18fd27b4a3aafcf260.gif' },
+     
+    ];
+    this.q2 = [
+      { value: 'Schedule newsletter', color: 'secondary',pic:'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
+     
+    ];
+   this.q3 = [
+      { value: 'Improve page performance', color: 'tertiary' ,pic:'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg'},
+      
+    ];
+  }
+  
+  
+
+
+  
+})
+
+        this.toastController.create({
+          message: 'Good Job!',
+          position:"middle",
+          duration: 2000
+        }).then(toast => toast.present());
+      
+        
+      }
+
+  }, 1000)
+
+
+
+
+
     this.dragulaService.drag('bag')
     .subscribe(({ name, el, source }) => {
-      el.setAttribute('color', 'danger');
+      el.setAttribute('color', 'primary');
     });
  
     this.dragulaService.removeModel('bag')
     .subscribe(({ item }) => {
+      this.slides.slideNext()
+
+console.log()
+this.slides.getActiveIndex().then(res=>{
+  console.log(res)
+  console.log(this.slides.ionSlideDidChange)
+this.res =res;
+  if(this.res==1)
+  {
+    this.q1 = [
+      { value: 'Buy Milk', color: 'primary',pic:'https://media.giphy.com/media/xT9DPzhNGA8MKjxwFG/giphy.gif' },
+     
+    ];
+    this.q2 = [
+      { value: 'Schedule newsletter', color: 'secondary',pic:'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
+     
+    ];
+   this.q3 = [
+      { value: 'Improve page performance', color: 'tertiary' ,pic:'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg'},
+      
+    ];
+  }
+  else if(this.res == 2)
+  {
+    this.q1 = [
+      { value: 'Buy Milk', color: 'primary',pic:'https://media.giphy.com/media/AOVDDuySk6o3m/giphy.gif' },
+     
+    ];
+    this.q2 = [
+      { value: 'Schedule newsletter', color: 'secondary',pic:'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
+     
+    ];
+   this.q3 = [
+      { value: 'Improve page performance', color: 'tertiary' ,pic:'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg'},
+      
+    ];
+  }
+  if(this.res==3)
+  {
+    this.q1 = [
+      { value: 'Buy Milk', color: 'primary',pic:'https://media1.tenor.com/images/a3c98dddaca3b15d1746a62a44abbc2b/tenor.gif?itemid=6183864' },
+     
+    ];
+    this.q2 = [
+      { value: 'Schedule newsletter', color: 'secondary',pic:'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
+     
+    ];
+   this.q3 = [
+      { value: 'Improve page performance', color: 'tertiary' ,pic:'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg'},
+      
+    ];
+  }
+  else
+  if(this.res==4)
+  {
+    this.q1 = [
+      { value: 'Buy Milk', color: 'primary',pic:'https://data.whicdn.com/images/271728632/original.gif' },
+     
+    ];
+    this.q2 = [
+      { value: 'Schedule newsletter', color: 'secondary',pic:'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
+     
+    ];
+   this.q3 = [
+      { value: 'Improve page performance', color: 'tertiary' ,pic:'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg'},
+      
+    ];
+  }
+  else if(this.res==5)
+  {
+    this.q1 = [
+      { value: 'Buy Milk', color: 'primary',pic:'https://i.pinimg.com/originals/ce/d4/51/ced4512db73c75e0a683ce0bc2b2f2d9.gif' },
+     
+    ];
+    this.q2 = [
+      { value: 'Schedule newsletter', color: 'secondary',pic:'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
+     
+    ];
+   this.q3 = [
+      { value: 'Improve page performance', color: 'tertiary' ,pic:'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg'},
+      
+    ];
+  }
+  else if(this.res==6)
+  {
+    this.q1 = [
+      { value: 'Buy Milk', color: 'primary',pic:'https://media0.giphy.com/media/13FD3rp8IqYUXm/giphy.gif' },
+     
+    ];
+    this.q2 = [
+      { value: 'Schedule newsletter', color: 'secondary',pic:'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
+     
+    ];
+   this.q3 = [
+      { value: 'Improve page performance', color: 'tertiary' ,pic:'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg'},
+      
+    ];
+  }
+else  if(this.res==7)
+{
+  this.q1 = [
+    { value: 'Buy Milk', color: 'primary',pic:'https://i.pinimg.com/originals/3d/ac/62/3dac62954ab3ed18fd27b4a3aafcf260.gif' },
+   
+  ];
+  this.q2 = [
+    { value: 'Schedule newsletter', color: 'secondary',pic:'https://www.flaticon.com/premium-icon/icons/svg/2335/2335153.svg' },
+   
+  ];
+ this.q3 = [
+    { value: 'Improve page performance', color: 'tertiary' ,pic:'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg'},
+    
+  ];
+}
+
+})
+
+
+
       this.toastController.create({
         message: 'Good Job!',
         position:"middle",
@@ -94,24 +361,15 @@ export class DragndropPage implements OnInit {
         swiper.classNames.push(`${swiper.params.containerModifierClass}cube`);
         swiper.classNames.push(`${swiper.params.containerModifierClass}3d`);
   
-        const overwriteParams = {
-          slidesPerView: 1,
-          slidesPerColumn: 1,
-          slidesPerGroup: 1,
-          watchSlidesProgress: true,
-          resistanceRatio: 0,
-          spaceBetween: 0,
-          centeredSlides: false,
-          virtualTranslate: true,
-        };
   
-        this.params = Object.assign(this.params, overwriteParams);
-        this.originalParams = Object.assign(this.originalParams, overwriteParams);
       }
     
   }
+}
 
   ngOnInit() {
   }
+
+ 
 
 }

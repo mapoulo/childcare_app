@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -140,7 +141,11 @@ export class HomePage{
     }
  }
 
-  constructor() {}
+  constructor(private routes:Router ) {}
+
+  start() {
+    this.routes.navigateByUrl('/dragndrop')
+  }
 
   selectAge(i, age) {
     this.active = i;

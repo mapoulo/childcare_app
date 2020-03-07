@@ -1,20 +1,97 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content [fullscreen]="true" >
+  <ion-slides #slides [options]="slideMaster">
+    <ion-slide class="animated bounceInDown">
+     <div class="container">
+       <div class="header">
+        <ion-toolbar>
+          <ion-title>What is your gender?</ion-title>
+        </ion-toolbar>
+       </div>
+       <div class="content">
+         <div class="male-container animated jello delay-2s" (click)="selectedGender('Male')" [ngClass]="{'jello active': childInfoObj.gender == 'Male'}">
+          <div class="male">
+            <img src="../../assets/images/boy.jpg" alt="">
+          </div>
+          <ion-text style="z-index: 10;" [style.color]="(childInfoObj.gender == 'Male') ? '#fff' : '#ff963e'">Male</ion-text>
+         </div>
+         <div class="female-container animated" (click)="selectedGender('Female')" [ngClass]="{'jello active': childInfoObj.gender == 'Female'}">
+          <div class="female animated jello delay-2s">
+            <img src="../../assets/images/girl.jpg" alt="">
+          </div>
+          <ion-text style="z-index: 10;" [style.color]="(childInfoObj.gender == 'Female') ? '#fff' : '#ff963e'"> Female</ion-text>
+         </div>
+       
+         <div class="btn">
+           
+         </div>
+       </div>
+     </div>
+       
+    </ion-slide>
+    <ion-slide>
+      <div class="container">
+        <div class="header">
+         <ion-toolbar>
+           <ion-buttons slot="start">
+             <ion-fab-button size="small" (click)="prevSlides()" fill="clear" mode="ios" color="light">
+              <ion-icon mode="ios" color="warning" name="arrow-back-sharp"></ion-icon>
+             </ion-fab-button>
+           </ion-buttons>
+           <ion-title >What is your Name?</ion-title>
+           <ion-buttons slot="end">
+            <ion-button fill="clear">
+              <ion-icon name="ios-arrow-back"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+         </ion-toolbar>
+        </div>
+        <div class="content_slide_two">
+          <div class="male-container">
+            <div class="male">
+              <img *ngIf="childInfoObj.gender == 'Male'" src="../../assets/images/boy.jpg" alt="">
+              <img *ngIf="childInfoObj.gender == 'Female'" src="../../assets/images/girl.jpg" alt="">
+            
+            </div>
+              <input placeholder="Type your Name" [(ngModel)]="childInfoObj.name" type="text">
+           </div>
+           <div class="header" style="margin: 1em 0;">
+            <ion-toolbar>
+              <ion-title>How old are you?</ion-title>
+            </ion-toolbar>
+           </div>
+           <div class="age">
+            <div class="btn">
+              <ion-fab-button size="small" (click)="prevSlides()" fill="clear" mode="ios" color="light">
+                <ion-icon mode="ios" color="warning" name="arrow-back-sharp"></ion-icon>
+               </ion-fab-button>
+            </div>
+             <ion-slides (ionSlideDidChange)="onSlideChange($ev)" [options]="slideOpts">
+               <ion-slide *ngFor="let age of ages; let i=index;"><ion-text fill="clear" class="animated" (click)="selectAge(i, age)" [ngClass]="{'jello active': active==i }" style="font-size: 32px;">{{age }}</ion-text></ion-slide>
+             </ion-slides>
+             <div class="btn">
+              <ion-fab-button size="small" (click)="prevSlides()" fill="clear" mode="ios" color="light">
+                <ion-icon mode="ios" color="warning" name="arrow-forward-sharp"></ion-icon>
+               </ion-fab-button>
+            </div>
+           </div>
+          </div>
+        </div>
+    </ion-slide>
+  </ion-slides>
 </ion-content>
+
+<ion-footer no-border translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start" *ngIf="childInfoObj.gender">
+      <ion-button class="animated zoomIn" size="large" shape="round" mode="ios" color="light" fill="solid" >Gender: {{childInfoObj.gender}}</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="start" *ngIf="childInfoObj.name">
+      <ion-button class="animated zoomIn"  size="large" shape="round" mode="ios" color="light" fill="solid" >Name: {{childInfoObj.name}}</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="start" *ngIf="childInfoObj.age">
+      <ion-button class="animated zoomIn"  size="large" shape="round" mode="ios" color="light" fill="solid" >Age: {{childInfoObj.age}}</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
+

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Round2Service } from '../round2.service';
 
 @Component({
   selector: 'app-modal',
@@ -8,13 +9,18 @@ import { Router } from '@angular/router';
 })
 export class ModalPage implements OnInit {
 
-  constructor(private routes: Router) { }
+  constructor(private routes: Router,public round:Round2Service) {
+
+
+
+   }
 
   ngOnInit() {
   }
 
   start() {
     this.routes.navigateByUrl('/dragndrop')
+    this.round.roundtwo =false;
   }
 
 }

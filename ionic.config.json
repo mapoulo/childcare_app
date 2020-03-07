@@ -1,5 +1,7 @@
 {
   "name": "childcare",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

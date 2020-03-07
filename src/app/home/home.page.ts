@@ -1,5 +1,6 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ export class HomePage implements OnInit{
   }
 
   @ViewChild('slides', {static: true}) slides : IonSlides;
-
+@ViewChild('ageSlide', {static: true}) ageSlide : IonSlides;
   slideMaster = {
     slidesPerView: 1,
     speed: 400,
@@ -104,12 +105,12 @@ export class HomePage implements OnInit{
   }
 
   slideOpts = {
-    slidesPerView: 5.5,
+    slidesPerView: 3.5,
     centeredSlide: true,
     
     
   }
-  ages: any = [8,9,10,11,12,13,15,16];
+  ages: any = [5,6,7,8,9,10,11,12,13,15];
   active: any;
 
   childInfoObj = {
@@ -133,6 +134,13 @@ export class HomePage implements OnInit{
     
   }
 
+  agePrevSlide() {
+    this.ageSlide.slidePrev();
+  }
+  ageNextSlide() {
+    this.ageSlide.slideNext();
+  }
+
  selectedGender(gender) {
     this.childInfoObj.gender = gender;
     if(this.childInfoObj.gender) {
@@ -143,8 +151,10 @@ export class HomePage implements OnInit{
     }
  }
 
-  constructor() {
-    
+  constructor(private routes:Router ) {}
+
+  start() {
+    this.routes.navigateByUrl('/dragndrop')
   }
 
   selectAge(i, age) {

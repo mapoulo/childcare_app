@@ -4,6 +4,7 @@ import {IonSlides} from '@ionic/angular';
 import { ViewChild } from '@angular/core'
 
 import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-dragndrop',
   templateUrl: './dragndrop.page.html',
@@ -40,12 +41,12 @@ export class DragndropPage implements OnInit {
  
 counter =15;
 res =0
-  constructor(private dragulaService: DragulaService, private toastController: ToastController) {
+  constructor(private dragulaService: DragulaService, private toastController: ToastController, private router:Router) {
 
 
     let intervalId = setInterval(() => {
       this.counter = this.counter - 1;
-      console.log(this.counter)
+      // console.log(this.counter)
       if(this.counter == 0){ 
         this.counter=15
         this.slides.slideNext()
@@ -54,7 +55,7 @@ res =0
     console.log(res)
    let num =res
    
-  this.res =num+1;
+  this.res =num;
     if(this.res==1)
     {
       this.q1 = [
@@ -162,7 +163,11 @@ res =0
     ];
   }
   
-  
+  else if(this.res==8)
+{
+  this.router.navigate(['modal'])
+}
+
 
 
   
@@ -302,6 +307,10 @@ else  if(this.res==7)
     { value: 'Improve page performance', color: 'tertiary' ,pic:'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg'},
     
   ];
+}
+else if(this.res==8)
+{
+  this.router.navigate(['modal'])
 }
 
 })

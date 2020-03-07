@@ -1,4 +1,15 @@
 
+.welcome {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+
+}
+
 .active {
   background: #ff963e;
   color: #fff;
@@ -29,13 +40,13 @@ ion-slides, ion-slide {
   align-items: center;
 
   .header {
-    flex: 0 0 10%;
+    flex-basis: 10%;
     width: 100% !important;
 
   }
 
   .content_slide_two {
-    flex: 0 0 90%;
+    flex-basis: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -51,12 +62,20 @@ ion-slides, ion-slide {
       border-radius: 5px;
       background: #eef2f5;
       display: flex;
+      align-items: center;
+
+
 
       .btn {
-        flex-basis: 10%;
+        flex-basis: 15%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        background: rgba(209, 209, 209, 0.24);
+
       }
       ion-slides {
-        flex-basis: 90%;
+        flex-basis: 85%;
       }
       
     }

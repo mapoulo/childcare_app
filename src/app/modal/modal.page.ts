@@ -20,7 +20,7 @@ export class ModalPage implements OnInit {
 
   start() {
     this.routes.navigateByUrl('/dragndrop')
-    this.round.roundtwo =false;
+    this.round.roundtwo =true;
   }
 
 }

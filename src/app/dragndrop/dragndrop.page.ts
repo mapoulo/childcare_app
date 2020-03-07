@@ -298,7 +298,7 @@ export class DragndropPage implements OnInit {
               this.router.navigate(['modal'])
             }
 
-          }
+          }else
             if(this.round.roundtwo==false)
             {
 
@@ -484,10 +484,10 @@ export class DragndropPage implements OnInit {
     
   }
  
-
+  // @ViewChild (IonSlides) protected slider: IonSlides;
   ionViewDidEnter()
   {
-   
+  
 
     console.log("Entered",this.round.roundtwo )
     
@@ -601,7 +601,7 @@ export class DragndropPage implements OnInit {
           this.router.navigate(['modal'])
         }
 
-      }
+      }else
         if(this.round.roundtwo==false)
         {
 

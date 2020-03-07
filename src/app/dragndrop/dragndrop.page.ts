@@ -16,6 +16,7 @@ import { Round2Service } from '../round2.service';
 
 
 export class DragndropPage implements OnInit {
+  credits: boolean = false;
   ngOnInit() {
 
   }
@@ -181,7 +182,11 @@ export class DragndropPage implements OnInit {
 
     this.dragulaService.removeModel('bag')
       .subscribe(({ item }) => {
-        this.slides.slideNext()
+        this.credits = true;
+        setTimeout(() => {
+          this.slides.slideNext() 
+        }, 4000);
+        
 
         console.log()
         this.slides.getActiveIndex().then(res => {
@@ -397,7 +402,8 @@ export class DragndropPage implements OnInit {
                   ];
                 }
                 else if (this.res == 8) {
-                  this.router.navigate(['modal'])
+                  this.router.navigate(['modal']);
+                  
                 }
     
 

@@ -8,11 +8,11 @@
       <ion-slides [options]="slideOpts" #slides (ionSlideDidChange)="slideChanged(slides)">
         <ion-slide *ngFor="let header of headers;">
         
-            <ion-toolbar>
-              <ion-title>{{header}} </ion-title>
-            </ion-toolbar>
+            <h1 class="ion-text-center">
+              {{header}} 
+            </h1>
         
-        </ion-slide>
+        </ion-slide> 
          <ion-slide>
          
         </ion-slide>
@@ -75,8 +75,11 @@
 
       
       <div class="drop">
+        <div class="fr_r">
+
+        </div>
         <img src="../../assets/undraw_drag_5i9w.svg" style="width: 50px; height: 50px" alt="">
-        <ion-text>Drag one of the image above and drop it here.</ion-text>
+       
       </div>
 </div>
 

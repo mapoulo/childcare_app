@@ -184,7 +184,11 @@ export class DragndropPage implements OnInit {
 
     this.dragulaService.drag('bag')
       .subscribe(({ name, el, source }) => {
-        el.setAttribute('color', 'primary');
+        setTimeout(() => {
+          el.setAttribute('color', 'primary');
+          console.log('Maximated and draggable, it\'s a rocket science');
+        }, 200);
+       
       });
 
     this.dragulaService.removeModel('bag')

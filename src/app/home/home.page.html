@@ -13,13 +13,13 @@
           <div class="female animated jello delay-2s">
             <img src="../../assets/images/girl.jpg" alt="">
           </div>
-          <ion-text style="z-index: 10;" [style.color]="(childInfoObj.gender == 'Princess') ? '#fff' : '#ff963e'">Princess</ion-text>
+          <ion-text style="z-index: 10;" [style.color]="(childInfoObj.gender == 'Princess') ? '#fff' : '#333'">Princess</ion-text>
          </div>
          <div class="male-container animated jello delay-2s" (click)="selectedGender('Prince')" [ngClass]="{'jello active': childInfoObj.gender == 'Prince'}">
           <div class="male">
             <img src="../../assets/images/boy.jpg" alt="">
           </div>
-          <ion-text style="z-index: 10;" [style.color]="(childInfoObj.gender == 'Prince') ? '#fff' : '#ff963e'">Prince</ion-text>
+          <ion-text style="z-index: 10;" [style.color]="(childInfoObj.gender == 'Prince') ? '#fff' : '#333'">Prince</ion-text>
          </div>
         
        
@@ -68,7 +68,7 @@
                </ion-button>
             </div>
              <ion-slides (ionSlideDidChange)="onSlideChange($ev)" #ageSlide [options]="slideOpts">
-               <ion-slide *ngFor="let age of ages; let i=index;"><ion-text fill="clear" class="animated" (click)="selectAge(i, age)" [ngClass]="{'jello active': active==i }" style="font-size: 32px;">{{age }}</ion-text></ion-slide>
+               <ion-slide *ngFor="let age of ages; let i=index;"><ion-text fill="clear" class="animated" (click)="selectAge(i, age)" [ngClass]="{'jello active': active==i }" style="font-size: 32px; color: #333;">{{age }}</ion-text></ion-slide>
              </ion-slides>
              <div class="btn">
               <ion-button size="small" (click)="ageNextSlide()" fill="clear" mode="ios" color="light">
@@ -90,7 +90,7 @@
             <div class="gif-image">
               <img src="../../assets/free-gifs-and-png-to-save-and-use-an-individual-emoji-file-without-using-the-app-1-locate-the-emoji-file-you-wish-to-use-static-png-or-animated-gif-2-200.gif" alt="">
             </div>
-            <div class="info">
+            <div class="info" style="color: #333;">
               <h1>Yey!, Welldone</h1>
               <h1>{{childInfoObj.gender}}</h1>
               <ion-text style="margin-bottom: 2em;">

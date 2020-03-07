@@ -484,7 +484,7 @@ export class DragndropPage implements OnInit {
     
   }
  
-
+  // @ViewChild (IonSlides) protected slider: IonSlides;
   ionViewDidEnter()
   {
   

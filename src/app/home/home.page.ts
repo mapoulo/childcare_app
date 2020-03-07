@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
 import { Router } from '@angular/router';
 
@@ -7,7 +7,10 @@ import { Router } from '@angular/router';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage{
+export class HomePage implements OnInit{
+  ngOnInit() {
+    this.slides.lockSwipes(true);
+  }
 
   @ViewChild('slides', {static: true}) slides : IonSlides;
 @ViewChild('ageSlide', {static: true}) ageSlide : IonSlides;
@@ -118,10 +121,17 @@ export class HomePage{
   }
 
   prevSlides() {
-    this.slides.slidePrev();
+    this.slides.lockSwipes(false)
+    this.slides.slidePrev().then(()=>{
+      this.slides.lockSwipeToNext(true);
+    });
   }
   nextSlides() {
-    this.slides.slideNext();
+    this.slides.lockSwipes(false)
+    this.slides.slideNext().then(()=>{
+      this.slides.lockSwipeToPrev(true);
+    });
+    
   }
 
   agePrevSlide() {
@@ -151,7 +161,6 @@ export class HomePage{
     this.active = i;
     this.childInfoObj.age = age
     console.log('click', i, age);
-    
   }
 
   onSlideChange(event) {

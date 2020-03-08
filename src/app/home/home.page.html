@@ -63,17 +63,17 @@
            </div>
            <div class="age">
             <div class="btn">
-              <ion-fab-button  size="small" (click)="agePrevSlide()" mode="ios" color="light">
-                <ion-icon mode="ios"  name="arrow-back-sharp"></ion-icon>
+              <ion-fab-button  size="small" (click)="agePrevSlide()" mode="ios" color="warning">
+                <ion-icon mode="ios" color="light"  name="arrow-back-sharp"></ion-icon>
                </ion-fab-button>
             </div>
              <ion-slides (ionSlideDidChange)="onSlideChange($ev)" #ageSlide [options]="slideOpts">
-               <ion-slide *ngFor="let age of ages; let i=index;"><ion-text fill="clear" class=" text animated" (click)="selectAge(i, age)" [ngClass]="{'jello active': (active==i &&  activeSlideNext ==getSlideNumber(i) ) }"  style="font-size: 32px;">{{age }}</ion-text></ion-slide>
+               <ion-slide *ngFor="let age of ages; let i=index;"><ion-text fill="clear" class=" text animated" (click)="selectAge(i, age)" [ngClass]="{'jello active': active==i }"  style="font-size: 32px;">{{age }}</ion-text></ion-slide>
              </ion-slides>
              <div class="btn">
-              <ion-button size="small" (click)="ageNextSlide()" fill="clear" mode="ios" color="light">
-                <ion-icon mode="ios" color="warning" name="arrow-forward-sharp"></ion-icon>
-               </ion-button>
+              <ion-fab-button size="small" (click)="ageNextSlide()" fill="clear" mode="ios" color="success">
+                <ion-icon mode="ios" color="light"   name="arrow-forward-sharp"></ion-icon>
+               </ion-fab-button>
             </div>
            </div>
            <div class="next animated tada infinite"   style="margin: 1em 0;" *ngIf="childInfoObj.age && childInfoObj.gender">

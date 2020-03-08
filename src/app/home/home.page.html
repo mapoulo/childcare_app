@@ -15,7 +15,7 @@
           </div>
           <ion-text style="z-index: 10;" [style.color]="(childInfoObj.gender == 'Princess') ? '#fff' : '#333'">Princess</ion-text>
          </div>
-         <div class="male-container animated jello delay-2s" (click)="selectedGender('Prince')" [ngClass]="{'jello active': childInfoObj.gender == 'Prince'}">
+         <div class="male-container animated jello delay-2s" (click)="selectedGender('Prince')" [ngClass]="{'jello active_boy': childInfoObj.gender == 'Prince'}">
           <div class="male">
             <img src="../../assets/images/boy.jpg" alt="">
           </div>
@@ -63,12 +63,12 @@
            </div>
            <div class="age">
             <div class="btn">
-              <ion-button  size="small" (click)="agePrevSlide()" fill="clear" mode="ios" color="light">
-                <ion-icon mode="ios" color="warning" name="arrow-back-sharp"></ion-icon>
-               </ion-button>
+              <ion-fab-button  size="small" (click)="agePrevSlide()" mode="ios" color="light">
+                <ion-icon mode="ios"  name="arrow-back-sharp"></ion-icon>
+               </ion-fab-button>
             </div>
              <ion-slides (ionSlideDidChange)="onSlideChange($ev)" #ageSlide [options]="slideOpts">
-               <ion-slide *ngFor="let age of ages; let i=index;"><ion-text fill="clear" class="animated" (click)="selectAge(i, age)" [ngClass]="{'jello active': active==i }" style="font-size: 32px; color: #333;">{{age }}</ion-text></ion-slide>
+               <ion-slide *ngFor="let age of ages; let i=index;"><ion-text fill="clear" class=" text animated" (click)="selectAge(i, age)" [ngClass]="{'jello active': (active==i &&  activeSlideNext ==getSlideNumber(i) ) }"  style="font-size: 32px;">{{age }}</ion-text></ion-slide>
              </ion-slides>
              <div class="btn">
               <ion-button size="small" (click)="ageNextSlide()" fill="clear" mode="ios" color="light">
@@ -77,7 +77,7 @@
             </div>
            </div>
            <div class="next animated tada infinite"   style="margin: 1em 0;" *ngIf="childInfoObj.age && childInfoObj.gender">
-             <ion-button (click)="nextSlides()" color="light" shape="round" style="color: yellow">
+             <ion-button (click)="nextSlides()" color="dark" shape="round">
                Next
              </ion-button>
            </div>

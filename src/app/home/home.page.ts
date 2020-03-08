@@ -106,7 +106,7 @@ export class HomePage implements OnInit{
 
   slideOpts = {
     slidesPerView: 3.5,
-    centeredSlide: true,
+    centeredSlides: true,
     
     
   }
@@ -162,9 +162,18 @@ export class HomePage implements OnInit{
     this.childInfoObj.age = age
     console.log('click', i, age);
   }
-
-  onSlideChange(event) {
+  activeSlideNext: number = 0;
  
+  onSlideChange(event) {
+    this.ageSlide.getActiveIndex().then(res => { 
+       this.activeSlideNext = res
+        console.log('bosss', res);
+        
+    });
+  }
+
+  getSlideNumber(i) {
+    return i;
   }
 
 }

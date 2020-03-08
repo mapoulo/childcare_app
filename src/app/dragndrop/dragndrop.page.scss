@@ -9,10 +9,19 @@
   }
   .vids {
     flex-basis: 35%;
-
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 13px;
+    box-shadow: 6px 6px 16px rgba(0,0,0,06), -6px -6px 16px rgba(45,45,45,0.5);
+    overflow: hidden;
   }
   .weird {
     flex-basis: 25%;
+    width: 95%;
+    margin: 0 auto;
+    border-radius: 13px;
+    box-shadow: 6px 6px 16px rgba(0,0,0,06), -6px -6px 16px rgba(45,45,45,0.5);
+    overflow: hidden;
   }
   .drop {
     flex-basis: 30% !important;
@@ -85,7 +94,12 @@
       height: 200px;
       width: 200px;
   }
-ion-content {
+ion-content.container {
+    --background: linear-gradient(25deg,#f0a7ff , #fc90fc);
+    transition: all 500ms;
+  }
+
+  ion-container.container_boy {
     --background: linear-gradient(25deg,#f0a7ff , #fc90fc);
     transition: all 500ms;
   }

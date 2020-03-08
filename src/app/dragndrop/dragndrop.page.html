@@ -1,5 +1,5 @@
-<ion-content forceOverscroll="false">
-<div class="container">
+<ion-content forceOverscroll="false" class="container" [ngClass]="{'container_with_princess': childInfoObj.gender == 'Princess', 'container_with_prince': childInfoObj.gender == 'Prince'}">
+<div class="container animated bounceInDown">
   <video width="0" height="0" controls autoplay loop >
     <source src="../assets/baby.mp4" type="video/mp4">
     <source src="movie.ogg" type="video/ogg">
@@ -44,11 +44,11 @@
             
        
            
-              <ion-col size="6" class="q2">
+              <ion-col size="6" class="q2" >
               
               <ion-list dragula="bag" [(dragulaModel)]="q2" lines="none">
       
-                <ion-item *ngFor="let item of q2" [color]="item.color" expand="block" text-wrap>
+                <ion-item style="border-radius: 13px; box-shadow: 6px 6px 16px rgba(0,0,0,.6); overflow: hidden;" *ngFor="let item of q2" [color]="item.color" expand="block" text-wrap>
               
       
         <img [src]="item.pic"  style="width: 100%; height: 150px; ">
@@ -61,7 +61,7 @@
               
               <ion-list dragula="bag" [(dragulaModel)]="q3" lines="none">
       
-                <ion-item *ngFor="let item of q3" [color]="item.color" expand="block" text-wrap>
+                <ion-item style="border-radius: 13px; box-shadow: 6px 6px 16px rgba(0,0,0,.6); overflow: hidden;" *ngFor="let item of q3" [color]="item.color" expand="block" text-wrap>
               
       
         <img [src]="item.pic" style="width: 100%; height: 150px;">
@@ -77,6 +77,10 @@
       <div class="drop">
         <div class="fr_r">
           <img src="../../assets/undraw_drag_5i9w.svg" alt="">
+        </div>
+
+        <div class="fr_score">
+
         </div>
        
        

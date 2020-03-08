@@ -31,3 +31,11 @@ ion-text, ion-title, input, ion-button, h1 {
    
 
 }
+.toast-container{
+    background:yellow;
+    .toast-md .toast-message{
+    color: red;
+}
+}
+
+

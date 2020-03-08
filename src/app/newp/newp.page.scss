@@ -1,0 +1,132 @@
+.container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+  
+    ion-slides {
+      flex-basis: 10%;
+    }
+    .vids {
+      flex-basis: 35%;
+      width: 90%;
+      margin: 0 auto;
+      border-radius: 13px;
+      box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.24), -6px -6px 16px rgb(255, 255, 255);
+      overflow: hidden;
+    }
+    .weird {
+      flex-basis: 25%;
+      width: 95%;
+      margin: 0 auto;
+    
+    }
+    .drop {
+      flex-basis: 30% !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  
+  
+      .fr_r {
+        flex: 0 0 90%;
+        height: 80%;
+        border: 3px dotted #dddddd;
+        position: relative;
+        border-radius: 13px;
+        box-shadow: -6px -6px 16px rgba(241, 241, 241, 0.24);
+  
+        &::before {
+          position: absolute;
+          top: -10%;
+          left: 0;
+          width: 100%;
+          height: 3px;
+          border-radius: 50px;
+          content: '';
+  
+        }
+  
+        img {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          object-fit: contain;
+        }
+      }
+    }
+  
+  }
+  
+  .gu-mirror {
+      position: fixed !important;
+      margin: 0 !important;
+      z-index: 9999 !important;
+      opacity: 0.8;
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+      filter: alpha(opacity=80);
+      pointer-events: none;
+    }
+     
+    /* high-performance display:none; helper */
+    .gu-hide {
+      left: -9999px !important;
+    }
+     
+    /* added to mirrorContainer (default = body) while dragging */
+    .gu-unselectable {
+      -webkit-user-select: none !important;
+      -moz-user-select: none !important;
+      -ms-user-select: none !important;
+      user-select: none !important;
+    }
+     
+    /* added to the source element while its mirror is dragged */
+    .gu-transit {
+      opacity: 0.2;
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+      filter: alpha(opacity=20);
+    }
+  
+    img {
+        height: 200px;
+        width: 200px;
+    }
+    .container  {
+      --background: linear-gradient(25deg,#a7f2ff 50%, #fc90fc 50px);
+      transition: all 500ms;
+    }
+    .container_with_princess {
+      --background: linear-gradient(25deg,#f0a7ff , #fc90fc);
+      transition: all 500ms;
+    }
+    .container_with_prince {
+      --background: linear-gradient(25deg,#a7f2ff, #a7bcff);
+      transition: all 500ms;
+    }
+  
+    ion-toolbar {
+      --background: transparent !important;
+      --border: none;
+    }
+  
+    .pictures-gifs {
+      height: 100%;
+      width: 100%;
+      position: relative;
+  
+      img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0%;
+      }
+    }
+  
+    ion-list {
+      background: transparent !important;
+    }
+  

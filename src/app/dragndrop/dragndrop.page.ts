@@ -182,7 +182,7 @@ export class DragndropPage implements OnInit {
 
     this.dragulaService.removeModel('bag').subscribe(({ item }) => {
         this.credits = true;
-        this.slides.slideNext() 
+        // this.slides.slideNext() 
         
 
         
@@ -193,6 +193,7 @@ export class DragndropPage implements OnInit {
           if(this.round.roundtwo == true)
           {
           if (this.res == 1) {
+           
             this.q1 = [
               { value: 'Buy Milk', color: 'primary', pic: 'https://media.giphy.com/media/xT9DPzhNGA8MKjxwFG/giphy.gif' },
 
@@ -205,6 +206,10 @@ export class DragndropPage implements OnInit {
               { value: 'Improve page performance', color: 'tertiary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg' },
 
             ];
+            console.log("value 1")
+            console.log('q1',this.q1)
+            console.log('q2',this.q2)
+            console.log('q3',this.q3)
           }
           else if (this.res == 2) {
             this.q1 = [
@@ -219,6 +224,11 @@ export class DragndropPage implements OnInit {
               { value: 'Improve page performance', color: 'tertiary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg' },
 
             ];
+
+            console.log('q1',this.q1)
+            console.log('q2',this.q2)
+            console.log('q3',this.q3)
+
           }
           if (this.res == 3) {
             this.q1 = [
@@ -233,6 +243,11 @@ export class DragndropPage implements OnInit {
               { value: 'Improve page performance', color: 'tertiary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg' },
 
             ];
+
+            console.log("value 2")
+            console.log('q1',this.q1)
+            console.log('q2',this.q2)
+            console.log('q3',this.q3)
           }
           else
             if (this.res == 4) {
@@ -248,6 +263,11 @@ export class DragndropPage implements OnInit {
                 { value: 'Improve page performance', color: 'tertiary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg' },
 
               ];
+
+              console.log("value 3")
+            console.log('q1',this.q1)
+            console.log('q2',this.q2)
+            console.log('q3',this.q3)
             }
             else if (this.res == 5) {
               this.q1 = [
@@ -262,6 +282,11 @@ export class DragndropPage implements OnInit {
                 { value: 'Improve page performance', color: 'tertiary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg' },
 
               ];
+
+              
+            console.log('q1',this.q1)
+            console.log('q2',this.q2)
+            console.log('q3',this.q3)
             }
             else if (this.res == 6) {
               this.q1 = [
@@ -276,6 +301,11 @@ export class DragndropPage implements OnInit {
                 { value: 'Improve page performance', color: 'tertiary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg' },
 
               ];
+
+              console.log("value 4")
+            console.log('q1',this.q1)
+            console.log('q2',this.q2)
+            console.log('q3',this.q3)
             }
             else if (this.res == 7) {
               this.q1 = [
@@ -290,6 +320,12 @@ export class DragndropPage implements OnInit {
                 { value: 'Improve page performance', color: 'tertiary', pic: 'https://www.flaticon.com/premium-icon/icons/svg/1991/1991275.svg' },
 
               ];
+
+
+              console.log("value 5")
+            console.log('q1',this.q1)
+            console.log('q2',this.q2)
+            console.log('q3',this.q3)
             }
             else if (this.res == 8) {
               this.router.navigate(['modal'])
@@ -312,6 +348,10 @@ export class DragndropPage implements OnInit {
                   { value: 'Improve page performance', color: 'tertiary', pic: 'https://thumbs.gfycat.com/AnguishedVastDorking-small.gif' },
     
                 ];
+                console.log("value 1")
+                console.log('q1',this.q1)
+                console.log('q2',this.q2)
+                console.log('q3',this.q3)
               }
               else if (this.res == 2) {
                 this.q1 = [
@@ -326,6 +366,10 @@ export class DragndropPage implements OnInit {
                   { value: 'Improve page performance', color: 'tertiary', pic: 'https://thumbs.gfycat.com/AnguishedVastDorking-small.gif' },
     
                 ];
+                console.log("value 2")
+                console.log('q1',this.q1)
+                console.log('q2',this.q2)
+                console.log('q3',this.q3)
               }
               if (this.res == 3) {
                 this.q1 = [
@@ -340,6 +384,10 @@ export class DragndropPage implements OnInit {
                   { value: 'Improve page performance', color: 'tertiary', pic: 'https://thumbs.gfycat.com/AnguishedVastDorking-small.gif' },
     
                 ];
+                console.log("value 3")
+                console.log('q1',this.q1)
+                console.log('q2',this.q2)
+                console.log('q3',this.q3)
               }
               else
                 if (this.res == 4) {
@@ -355,6 +403,10 @@ export class DragndropPage implements OnInit {
                     { value: 'Improve page performance', color: 'tertiary', pic: 'https://thumbs.gfycat.com/AnguishedVastDorking-small.gif' },
       
                   ];
+                  console.log("value 4")
+                  console.log('q1',this.q1)
+                  console.log('q2',this.q2)
+                  console.log('q3',this.q3)
                 }
                 else if (this.res == 5) {
                   this.q1 = [
@@ -369,6 +421,11 @@ export class DragndropPage implements OnInit {
                     { value: 'Improve page performance', color: 'tertiary', pic: 'https://thumbs.gfycat.com/AnguishedVastDorking-small.gif' },
       
                   ];
+
+
+                  console.log('q1',this.q1)
+                  console.log('q2',this.q2)
+                  console.log('q3',this.q3)
                 }
                 else if (this.res == 6) {
                   this.q1 = [
@@ -383,6 +440,11 @@ export class DragndropPage implements OnInit {
                     { value: 'Improve page performance', color: 'tertiary', pic: 'https://thumbs.gfycat.com/AnguishedVastDorking-small.gif' },
       
                   ];
+
+
+                  console.log('q1',this.q1)
+                  console.log('q2',this.q2)
+                  console.log('q3',this.q3)
                 }
                 else if (this.res == 7) {
                   this.q1 = [
@@ -397,6 +459,11 @@ export class DragndropPage implements OnInit {
                     { value: 'Improve page performance', color: 'tertiary', pic: 'https://thumbs.gfycat.com/AnguishedVastDorking-small.gif' },
       
                   ];
+
+console.log("value 7")
+                  console.log('q1',this.q1)
+                  console.log('q2',this.q2)
+                  console.log('q3',this.q3)
                 }
                 else if (this.res == 8) {
                   this.router.navigate(['modal']);
@@ -489,20 +556,20 @@ export class DragndropPage implements OnInit {
   {
     this.DidEnter()
   }
-
+num =0
  async DidEnter()
   {
   
-this.slides.slideTo(1)
+// this.slides.slideTo(1)
 
 
     console.log("Entered",this.round.roundtwo )
     
 
-    this.slides.getActiveIndex().then(async res => {
-      console.log(res)
+    // this.slides.getActiveIndex().then(async res => {
+      // console.log(res)
 
-      this.res = res; 
+      this.res = this.num+1; 
       if(this.round.roundtwo == true)
       {
       if (this.res == 1) {
@@ -729,11 +796,12 @@ this.slides.slideTo(1)
 
 
 
+          
+        // }
+      // })
 
-        }})
 
 
+          }
 
-  }
-
-}
+        }}

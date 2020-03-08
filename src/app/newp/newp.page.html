@@ -1,0 +1,92 @@
+<ion-content forceOverscroll="false">
+
+<video width="0" height="0" controls autoplay loop >
+  <source src="../assets/baby.mp4" type="video/mp4">
+  <source src="movie.ogg" type="video/ogg">
+  Your browser does not support the video tag.
+</video>
+    <ion-slides [options]="slideOpts" #slides (ionSlideDidChange)="slideChanged(slides)">
+      <ion-slide>
+        <h1>1 Point</h1>
+      </ion-slide>
+      <ion-slide>
+        <h1>2 Points</h1>
+      </ion-slide>
+      <ion-slide>
+        <h1>3 Points</h1>
+      </ion-slide>
+       <ion-slide>
+        <h1>4 Points</h1>
+      </ion-slide>
+       <ion-slide>
+        <h1>5 Points</h1>
+      </ion-slide>
+       <ion-slide>
+        <h1>6 Points</h1>
+      </ion-slide>
+      <ion-slide>
+        <h1>7 Points</h1>
+      </ion-slide>
+      <ion-slide>
+        <h1>8 Points</h1>
+      </ion-slide>
+       <ion-slide>
+       
+      </ion-slide>
+    </ion-slides>
+<div *ngFor="let item of q1" align ="center">
+<img [src]="item.pic" height ="100px" width ="100px">
+</div>
+  <ion-grid>
+ 
+    <ion-row align-items-center>
+  
+ 
+      <ion-col size="12">
+
+      </ion-col>
+ 
+    </ion-row>
+ 
+ 
+ 
+    <ion-row no-padding class="matrix">
+  
+ 
+      
+ 
+     
+        <ion-col size="6" class="q2">
+        
+        <ion-list dragula="bag" [(dragulaModel)]="q2" lines="none">
+
+          <ion-item *ngFor="let item of q2" [color]="item.color" expand="block" text-wrap>
+        
+
+  <img [src]="item.pic">
+           
+          </ion-item>
+        </ion-list>
+      </ion-col>
+ 
+      <ion-col size="6" class="q3">
+        
+        <ion-list dragula="bag" [(dragulaModel)]="q3" lines="none">
+
+          <ion-item *ngFor="let item of q3" [color]="item.color" expand="block" text-wrap>
+        
+
+  <img [src]="item.pic">
+           
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <pre>
+  </pre>
+ 
+  <div align ="center">
+    <p style ="size:300px" align ="center"><ion-icon name ="trash"></ion-icon> DROP HERE</p>
+  </div>
+</ion-content>

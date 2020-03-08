@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { DragulaService } from 'ng2-dragula';
-import { IonSlides } from '@ionic/angular';
+import { IonSlides, ModalController } from '@ionic/angular';
 import { ViewChild } from '@angular/core'
 
 import { ToastController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Round2Service } from '../round2.service';
+import { ModalPage } from '../modal/modal.page';
 @Component({
   selector: 'app-dragndrop',
   templateUrl: './dragndrop.page.html',
@@ -36,7 +37,7 @@ export class DragndropPage implements OnInit {
   res = 0;
   gender;
   constructor(private dragulaService: DragulaService, private toastController: ToastController, private router: Router,
-    public activatedRoute: ActivatedRoute,public round:Round2Service) {
+    public activatedRoute: ActivatedRoute,public round:Round2Service,public modalController: ModalController) {
     this.gender = this.activatedRoute.snapshot.paramMap.get("gender");
 
     // let intervalId = setInterval(() => {
@@ -184,11 +185,11 @@ export class DragndropPage implements OnInit {
         this.slides.slideNext() 
         
 
-        console.log()
-        this.slides.getActiveIndex().then(res => {
-          console.log(res)
+        
+      
+          
     
-          this.res = res;
+          this.res = this.res+1;
           if(this.round.roundtwo == true)
           {
           if (this.res == 1) {
@@ -399,6 +400,7 @@ export class DragndropPage implements OnInit {
                 }
                 else if (this.res == 8) {
                   this.router.navigate(['modal']);
+                  this.res=0
                   
                 }
     
@@ -410,7 +412,7 @@ export class DragndropPage implements OnInit {
 
             }
 
-        })
+      
 
 
 
@@ -485,12 +487,19 @@ export class DragndropPage implements OnInit {
   // @ViewChild (IonSlides) protected slider: IonSlides;
   ionViewDidEnter()
   {
+    this.DidEnter()
+  }
+
+ async DidEnter()
+  {
   
+this.slides.slideTo(1)
+
 
     console.log("Entered",this.round.roundtwo )
     
 
-    this.slides.getActiveIndex().then(res => {
+    this.slides.getActiveIndex().then(async res => {
       console.log(res)
 
       this.res = res; 
@@ -596,6 +605,7 @@ export class DragndropPage implements OnInit {
           ];
         }
         else if (this.res == 8) {
+          this.res =1;
           this.router.navigate(['modal'])
         }
 
@@ -703,7 +713,15 @@ export class DragndropPage implements OnInit {
               ];
             }
             else if (this.res == 8) {
-              this.router.navigate(['modal'])
+              const modal = await this.modalController.create({
+                component: ModalPage
+              });
+              return await modal.present();
+
+              modal.onDidDismiss().then(res=>{
+                this.res = 1
+                this.DidEnter()
+              })
             }
 
 

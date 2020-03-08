@@ -55,12 +55,26 @@
 
 }
 
+.text {
+  color: #333 ;
+}
+
 .active {
-  background: #ff963e;
-  color: #fff;
-  transform: scale(2.5);
+  background: #ff3eff;
+  color: rgb(255, 255, 255);
+  transform: scale(2.5); 
   padding: .5em;
-  border-radius: 50px;
+  border-radius: 50px; 
+  position: relative;
+  z-index: 10;
+  transition: all 500ms;
+}
+.active_boy {
+  background: #3e92ff;
+  color: rgb(255, 255, 255);
+  transform: scale(2.5); 
+  padding: .5em;
+  border-radius: 50px; 
   position: relative;
   z-index: 10;
   transition: all 500ms;
@@ -183,12 +197,12 @@ ion-slides, ion-slide {
         position: absolute;
         bottom: 0;
         left: 10%;
-        width: 60%;
+        width: 80%;
         content: '';
         background: rgb(253, 188, 188);
         height: 6px;
         border-radius: 50px;
-        transform: rotate(25deg);
+        //transform: rotate(25deg);
       }
      
 

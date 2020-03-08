@@ -176,17 +176,13 @@ export class DragndropPage implements OnInit {
 
 
 
-    this.dragulaService.drag('bag')
-      .subscribe(({ name, el, source }) => {
+    this.dragulaService.drag('bag').subscribe(({ name, el, source }) => {
         el.setAttribute('color', 'primary');
       });
 
-    this.dragulaService.removeModel('bag')
-      .subscribe(({ item }) => {
+    this.dragulaService.removeModel('bag').subscribe(({ item }) => {
         this.credits = true;
-        setTimeout(() => {
-          this.slides.slideNext() 
-        }, 4000);
+        this.slides.slideNext() 
         
 
         
@@ -423,6 +419,7 @@ export class DragndropPage implements OnInit {
         this.toastController.create({
           message: 'Excellent!',
           position: "middle",
+          cssClass: 'customToastClass',
           duration: 2000
         }).then(toast => toast.present());
       });
@@ -466,6 +463,7 @@ export class DragndropPage implements OnInit {
     initialSlide: 1,
     speed: 400,
     grabCursor: true,
+    centredSlides: true,
     cubeEffect: {
       shadow: true,
       slideShadows: true,

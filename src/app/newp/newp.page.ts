@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { DragulaService } from 'ng2-dragula';
-import { ToastController } from '@ionic/angular';
+import { ToastController, ModalController } from '@ionic/angular';
 import { Round2Service } from '../round2.service';
 import { LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { ModalPage } from '../modal/modal.page';
 
 
 @Component({
@@ -31,7 +32,7 @@ export class NewpPage implements OnInit {
   selectedQuadrant = 'q1';
  res=0
  num =0
-  constructor(public router:Router,public round:Round2Service,private dragulaService: DragulaService, private toastController: ToastController,public loadingController: LoadingController) {
+  constructor(public modalController:ModalController,public router:Router,public round:Round2Service,private dragulaService: DragulaService, private toastController: ToastController,public loadingController: LoadingController) {
     this.dragulaService.drag('bag')
     .subscribe(({ name, el, source }) => {
       el.setAttribute('color', 'danger');
@@ -52,7 +53,7 @@ export class NewpPage implements OnInit {
       });
       await loading.present();
 
-      loading.onDidDismiss().then(res=>{
+      loading.onDidDismiss().then(async res=>{
         if(this.round.roundtwo == true)
         {
         if (this.res == 1) {
@@ -191,7 +192,22 @@ export class NewpPage implements OnInit {
           console.log('q3',this.q3)
           }
           else if (this.res == 8) {
-            this.router.navigate(['modal'])
+            {
+                
+              
+
+                 
+              const modal = await this.modalController.create({
+                component: ModalPage
+              });
+              return await modal.present();
+
+              modal.onDidDismiss().then(res=>{
+                this.res = 1
+                
+              })
+             
+          }
           }
 
         }else
@@ -329,9 +345,20 @@ console.log("value 7")
                 console.log('q3',this.q3)
               }
               else if (this.res == 8) {
-                this.router.navigate(['modal']);
-                this.res=0
                 
+              
+
+                 
+                  const modal = await this.modalController.create({
+                    component: ModalPage
+                  });
+                  return await modal.present();
+    
+                  modal.onDidDismiss().then(res=>{
+                    this.res = 1
+                    
+                  })
+                 
               }
   
 

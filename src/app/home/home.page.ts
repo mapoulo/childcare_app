@@ -154,7 +154,7 @@ export class HomePage implements OnInit{
   constructor(private routes:Router ) {}
 
   start() {
-    this.routes.navigate(['dragndrop',{gender:this.childInfoObj.gender}])
+    this.routes.navigate(['newp',{gender:this.childInfoObj.gender}])
   }
 
   selectAge(i, age) {

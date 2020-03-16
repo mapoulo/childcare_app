@@ -1,92 +1,90 @@
-<ion-content forceOverscroll="false">
+<ion-content forceOverscroll="false" class="container" [ngClass]="{'container_with_princess': gender == 'Princess', 'container_with_prince': gender == 'Prince'}">
+<div class="container animated bounceInDown">
+  <video width="0" height="0" controls autoplay loop >
+    <source src="../assets/baby.mp4" type="video/mp4">
+    <source src="movie.ogg" type="video/ogg">
+    Your browser does not support the video tag.
+  </video>
+      <ion-slides [options]="slideOpts" #slides (ionSlideDidChange)="slideChanged(slides)">
+        <ion-slide *ngFor="let header of headers;">
+        
+            <h1 class="ion-text-center">
+              {{header}} 
+            </h1>
+        
+        </ion-slide> 
+         <ion-slide>
+         
+        </ion-slide>
+      </ion-slides>
 
-<video width="0" height="0" controls autoplay loop >
-  <source src="../assets/baby.mp4" type="video/mp4">
-  <source src="movie.ogg" type="video/ogg">
-  Your browser does not support the video tag.
-</video>
-    <ion-slides [options]="slideOpts" #slides (ionSlideDidChange)="slideChanged(slides)">
-      <ion-slide>
-        <h1>1 Point</h1>
-      </ion-slide>
-      <ion-slide>
-        <h1>2 Points</h1>
-      </ion-slide>
-      <ion-slide>
-        <h1>3 Points</h1>
-      </ion-slide>
-       <ion-slide>
-        <h1>4 Points</h1>
-      </ion-slide>
-       <ion-slide>
-        <h1>5 Points</h1>
-      </ion-slide>
-       <ion-slide>
-        <h1>6 Points</h1>
-      </ion-slide>
-      <ion-slide>
-        <h1>7 Points</h1>
-      </ion-slide>
-      <ion-slide>
-        <h1>8 Points</h1>
-      </ion-slide>
-       <ion-slide>
+      <div class="vids animated rollIn delay-1s">
+        <div *ngFor="let item of q1" class="pictures-gifs">
+        <img [src]="item.pic">
+        </div>
+      </div>
+
+      <div class="weird">
+        <ion-grid>
+ 
+          <ion-row align-items-center>
+        
        
-      </ion-slide>
-    </ion-slides>
-<div *ngFor="let item of q1" align ="center">
-<img [src]="item.pic" height ="100px" width ="100px">
-</div>
-  <ion-grid>
- 
-    <ion-row align-items-center>
-  
- 
-      <ion-col size="12">
-
-      </ion-col>
- 
-    </ion-row>
- 
- 
- 
-    <ion-row no-padding class="matrix">
-  
- 
+            <ion-col size="12">
       
- 
-     
-        <ion-col size="6" class="q2">
+            </ion-col>
+       
+          </ion-row>
+       
+       
+       
+          <ion-row no-padding class="matrix">
         
-        <ion-list dragula="bag" [(dragulaModel)]="q2" lines="none">
-
-          <ion-item *ngFor="let item of q2" [color]="item.color" expand="block" text-wrap>
-        
-
-  <img [src]="item.pic">
+       
+            
+       
            
-          </ion-item>
-        </ion-list>
-      </ion-col>
- 
-      <ion-col size="6" class="q3">
-        
-        <ion-list dragula="bag" [(dragulaModel)]="q3" lines="none">
+              <ion-col size="6" class="q2" >
+              
+              <ion-list class="animated jello" dragula="bag" [(dragulaModel)]="q2" lines="none">
+      
+                <ion-item style="border-radius: 13px; box-shadow: 6px 6px 16px rgba(0,0,0,.2); overflow: hidden;" *ngFor="let item of q2" [color]="item.color" expand="block" text-wrap>
+              
+      
+        <img [src]="item.pic"  style="width: 100%; height: 150px; ">
+                 
+                </ion-item>
+              </ion-list>
+            </ion-col>
+       
+            <ion-col size="6" class="q3">
+              
+              <ion-list  class="animated jello" dragula="bag" [(dragulaModel)]="q3" lines="none">
+      
+                <ion-item style="border-radius: 13px; box-shadow: 6px 6px 16px rgba(0,0,0,.2); overflow: hidden;" *ngFor="let item of q3" [color]="item.color" expand="block" text-wrap>
+              
+      
+        <img [src]="item.pic" style="width: 100%; height: 150px;">
+                 
+                </ion-item>
+              </ion-list>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
 
-          <ion-item *ngFor="let item of q3" [color]="item.color" expand="block" text-wrap>
-        
+      
+      <div class="drop">
+        <div class="fr_r">
+          <img src="../../assets/undraw_drag_5i9w.svg" alt="">
+        </div>
+      </div>
+</div>
 
-  <img [src]="item.pic">
-           
-          </ion-item>
-        </ion-list>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <pre>
-  </pre>
+   
+
  
-  <div align ="center">
-    <p style ="size:300px" align ="center"><ion-icon name ="trash"></ion-icon> DROP HERE</p>
-  </div>
+ 
+ 
+ 
 </ion-content>
